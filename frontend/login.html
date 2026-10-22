@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\style.css"/>
+    <title>Login - RVA Events</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Log in</h1>
+        <p>Find events and connect with your Richmond community.</p>
+        
+        <form class="form-container">
+            <div class="input-group">
+                <label>Enter your email:</label>
+                <input type="email" id="email" name= "email" placeholder="example@example.com" required>
+            </div>
+
+            <div class="input-group">
+                <label>Enter your password:</label>
+                <input type="password" id="password" name= "password" required>
+            </div>
+            
+            <div class="random-section">
+                <label><input type="checkbox" name="remember"> Keep me signed in</label>
+                <p><a href="forgot_password.html">Forgot password?</a></p>
+            </div>
+
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+
+            <input type="submit" value="Log in">
+        </form>
+    </div>
+
+    <script scr="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+/* Center everything on the screen and give it a nice background */
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f6f9;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+/* Style the login container as a card */
+.login-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+/* Headings and text inside the card */
+.login-container h1 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 24px;
+    color: #1a1a1a;
+}
+
+.login-container > p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+/* Form layout */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+.input-group input {
+    padding: 10px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #0066cc;
+}
+
+/* Checkbox and Forgot Password row */
+.random-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.random-section label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.random-section a, 
+.form-container > p a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.random-section a:hover, 
+.form-container > p a:hover {
+    text-decoration: underline;
+}
+
+/* Sign up text prompt */
+.form-container > p {
+    font-size: 14px;
+    margin: 4px 0;
+    color: #666;
+}
+
+/* Submit button styling */
+input[type="submit"] {
+    background-color: #0066cc;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 8px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0052a3;
+}
