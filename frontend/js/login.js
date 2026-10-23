@@ -1,31 +1,24 @@
-import { listOfUsers } from "./ValidUsers.js";
+import { signIn } from "./auth.js";
 
 document.getElementById("login-form").addEventListener("submit", validateExistingUser);
 
 function validateExistingUser(event){
     event.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value;
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const errorMessage = document.getElementById("login-error");
 
-    if(!existingUser(email, password)){
-        alert("The email or password is incorrect.");
+    const result = signIn(emailInput.value, passwordInput.value);
+
+    if(!result.ok){
+        // [E01] Keep the email and clear the password field
+        errorMessage.textContent = result.message;
+        passwordInput.value = "";
+        passwordInput.focus();
         return;
     }
 
+    errorMessage.textContent = "";
     window.location.href = "./index.html";
-}
-
-function existingUser(email, password){
-    if(email === "testuser@example.com" && password === "Group7RVA"){
-        return true;
-    }
-
-    for(const user of listOfUsers){
-        if(email === user.email && password === user.password){
-            return true;
-        }
-    }
-
-    return false;
 }

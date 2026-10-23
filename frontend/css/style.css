@@ -118,3 +118,14 @@ input[type="submit"] {
 input[type="submit"]:hover {
     background-color: #0052a3;
 }
+
+/* Error messages shown next to invalid fields */
+.error-message {
+    color: #c0392b;
+    font-size: 13px;
+    margin: 0;
+}
+
+.error-message:empty {
+    display: none;
+}

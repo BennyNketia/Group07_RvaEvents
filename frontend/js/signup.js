@@ -3,8 +3,9 @@
  *      that the information inputted is correct and  aligns with RVA Events' security standards.
  */
 
-import { userList } from "./ValidUsers.js";
-import { User } from "./User.js";
+import { createAccount } from "./auth.js";
+
+const FIELDS = ["email", "password", "confirmPassword"];
 
 /**
  * This line waits for the user to hit the "Create Account" button inorder to then run the validation checks.
@@ -12,60 +13,28 @@ import { User } from "./User.js";
 document.getElementById("createAccountForm").addEventListener("submit", validateCreateAccount);
 
 /**
- * validateCreateAccount() collects the user generated content from the form on the sign up page,
- *      it then sends the relevant informaiton to the respective helper methods in order to validate it.
- *      If any of the helper methods return a false, then an alert will appear on the page stating the fault,
- *      alternatively the user is directed to the home page.
- * 
+ * validateCreateAccount() collects the user generated content from the form on the sign up page
+ *      and tries to create the account. If any field is invalid, a message is shown next to that field
+ *      and the valid entries are kept [E02]; otherwise the user is directed to the log in page.
+ *
  * @param {*} event - This is the event listener, so this method only executes when the form is submitted
- * @returns - Sends the user to the log in page if all of the user generated content is valid, otherwise
- *      the user will remain on the sign up page.
  */
 function validateCreateAccount(event){
     event.preventDefault();
 
-    const email = document.getElementById("email").value.trim();
+    const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
-    if(!validEmail(email)){
-        alert("Please enter a valid email address.");
+    const result = createAccount(email, password, confirmPassword);
+
+    for(const field of FIELDS){
+        document.getElementById(field + "-error").textContent = result.ok ? "" : (result.errors[field] || "");
+    }
+
+    if(!result.ok){
         return;
     }
-    
-    if(!validPassword(password, confirmPassword)){
-        alert("Passwords must be at least 8 characters and match.");
-        return;
-    }
 
-    const user = new User(Date.now(), email, password)
-    userList(user);
-
-    window.location.href = "./login.html"
-}
-
-/**
- * validEmail() confirms that the email value matches the format of a valid email.
- * 
- * @param {*} email - The email the user input
- * @returns - true if the format of the user inputted email matches the format of a valid email, otherwise false
- */
-function validEmail(email){
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      return false;
-    }
-
-    return true;
-}
-
-/**
- * validPassword() confirms whether or not if the password and confirmPassword values are equal, and 
- *      if the password meets security standards.
- * 
- * @param {*} password - The first password the user inputs in the password input
- * @param {*} confirmPassword - The second password the user inputs in password input
- * @returns - true if the password length is greater than or equal to 8 and matches confirmPassword 
- */
-function validPassword(password, confirmPassword){
-    return password.length >= 8 && password === confirmPassword;
+    window.location.href = "./login.html";
 }
