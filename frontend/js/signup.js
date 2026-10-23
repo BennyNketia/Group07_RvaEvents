@@ -3,6 +3,9 @@
  *      that the information inputted is correct and  aligns with RVA Events' security standards.
  */
 
+import { userList } from "./ValidUsers.js";
+import { User } from "./User.js";
+
 /**
  * This line waits for the user to hit the "Create Account" button inorder to then run the validation checks.
  */
@@ -15,13 +18,13 @@ document.getElementById("createAccountForm").addEventListener("submit", validate
  *      alternatively the user is directed to the home page.
  * 
  * @param {*} event - This is the event listener, so this method only executes when the form is submitted
- * @returns - Sends the user to the home page if all of the user generated content is valid, otherwise
+ * @returns - Sends the user to the log in page if all of the user generated content is valid, otherwise
  *      the user will remain on the sign up page.
  */
 function validateCreateAccount(event){
     event.preventDefault();
 
-    const email = validEmail(document.getElementById("email").value).trim();
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
 
@@ -31,11 +34,14 @@ function validateCreateAccount(event){
     }
     
     if(!validPassword(password, confirmPassword)){
-        alert("Passwords do not match. Please try again.");
+        alert("Passwords must be at least 8 characters and match.");
         return;
     }
 
-    window.location.href = "index.html"
+    const user = new User(Date.now(), email, password)
+    userList(user);
+
+    window.location.href = "./login.html"
 }
 
 /**
