@@ -20,5 +20,5 @@ function validateExistingUser(event){
     }
 
     errorMessage.textContent = "";
-    window.location.href = "./index.html";
+    window.location.href = "./events.html";
 }

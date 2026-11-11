@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Event details - RVA Events</title>
+</head>
+<body>
+    <div class="login-container event-container">
+        <div class="top-bar">
+            <span class="brand">RVA EVENTS</span>
+        </div>
+
+        <!-- [PRO01] Event details screen (all event information is read only) -->
+        <section id="details-screen">
+            <h1>Event details</h1>
+            <h2 id="event-name"></h2>
+
+            <dl class="event-info">
+                <dt>Date:</dt><dd id="event-date"></dd>
+                <dt>Time:</dt><dd id="event-time"></dd>
+                <dt>Location:</dt><dd id="event-location"></dd>
+            </dl>
+
+            <h3>Description</h3>
+            <p id="event-description" class="event-description"></p>
+
+            <dl class="event-info">
+                <dt>Event tags:</dt><dd id="event-tags"></dd>
+                <dt>Attendees:</dt><dd id="event-attendees"></dd>
+            </dl>
+
+            <p class="status-message" id="details-message" role="status"></p>
+
+            <div class="button-row">
+                <button type="button" class="primary" id="rsvp-button">RSVP</button>
+                <button type="button" class="primary" id="cancel-rsvp-button" hidden>Cancel RSVP</button>
+                <button type="button" class="secondary" id="back-button">Back</button>
+            </div>
+        </section>
+
+        <!-- [A02] Cancel RSVP confirmation prompt -->
+        <section id="cancel-screen" hidden>
+            <h1>Cancel RSVP?</h1>
+            <p>Are you sure you want to cancel your RSVP for <strong id="cancel-event-name"></strong>?</p>
+            <div class="button-row">
+                <button type="button" class="primary" id="confirm-cancel-button">Confirm</button>
+                <button type="button" class="secondary" id="cancel-back-button">Back</button>
+            </div>
+        </section>
+
+        <!-- [PRO02] RSVP confirmation screen -->
+        <section id="confirmation-screen" hidden>
+            <h1>RSVP confirmation</h1>
+            <div class="going-box">
+                <h2 id="going-message"></h2>
+                <p>Your RSVP has been saved.</p>
+            </div>
+            <h3 id="confirm-event-name"></h3>
+            <p id="confirm-event-when"></p>
+            <div class="button-column">
+                <button type="button" class="secondary" id="calendar-button">Add to Calendar</button>
+                <button type="button" class="primary" id="done-button">Done</button>
+            </div>
+        </section>
+    </div>
+
+    <script type="module" src="js/eventDetails.js"></script>
+</body>
+</html>

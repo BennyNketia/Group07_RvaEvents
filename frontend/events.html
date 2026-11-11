@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Events - RVA Events</title>
+</head>
+<body>
+    <div class="login-container event-container">
+        <div class="top-bar">
+            <span class="brand">RVA EVENTS</span>
+            <span class="signed-in">
+                <span id="user-email"></span>
+                <button type="button" class="link-button" id="sign-out">Sign out</button>
+            </span>
+        </div>
+
+        <h1>Upcoming events</h1>
+        <p>Select an event to see its details and RSVP.</p>
+
+        <ul class="event-list" id="event-list"></ul>
+    </div>
+
+    <script type="module" src="js/events.js"></script>
+</body>
+</html>

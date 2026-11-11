@@ -5,6 +5,7 @@
 
 import { User } from "./User.js";
 import { findUserByEmail, normalizeEmail, userList } from "./ValidUsers.js";
+import { startSession } from "./session.js";
 
 export const MAX_FAILED_ATTEMPTS = 5;               // [BR05]
 export const LOCKOUT_MS = 15 * 60 * 1000;           // [BR05] 15 minutes
@@ -121,6 +122,7 @@ export function signIn(email, password, now = Date.now()){
     if(user && user.passwordHash === password){
         delete attempts[key];
         saveAttempts(attempts);
+        startSession(user);                                  // Lets UC-02 check [BR01]
         return { ok: true };
     }
 
